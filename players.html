@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        .image_slider {
+            position: relative;
+            max-width: 80%;
+            margin: auto;
+        }
+        .image_slider img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transition: slide 1s ease-in-out;
+        }
+        .image_slider img.active {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="image_slider">
+        <img src="img/slider/1.JPG" alt="image slider" class="active">
+        <img src="img/slider/2.JPG" alt="image slider">
+        <img src="img/slider/3.JPG" alt="image slider">
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("image_slider")[0].getElementsByTagName("img");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+            slides[slideIndex - 1].classList.add("active");
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+    </script>
+</body>
+</html>
